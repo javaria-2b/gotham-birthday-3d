@@ -1,0 +1,93 @@
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-loading);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg);
+  transition: opacity 0.8s ease-out;
+}
+
+#loading-screen.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Bat emblem silhouette — pure CSS */
+.loader-emblem {
+  width: 80px;
+  height: 60px;
+  background: var(--color-ui-gold);
+  clip-path: polygon(
+    50% 0%,
+    60% 15%,
+    75% 10%,
+    80% 25%,
+    90% 30%,
+    100% 50%,
+    95% 70%,
+    85% 60%,
+    70% 65%,
+    60% 55%,
+    50% 100%,
+    40% 55%,
+    30% 65%,
+    15% 60%,
+    5% 70%,
+    0% 50%,
+    10% 30%,
+    20% 25%,
+    25% 10%,
+    40% 15%
+  );
+  animation: loaderPulse 1.5s ease-in-out infinite;
+  mask-image: radial-gradient(circle, black 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);
+}
+
+@keyframes loaderPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3));
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.7));
+  }
+}
+
+/* Progress bar */
+.loader-bar-track {
+  width: 200px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.loader-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--color-ui-gold);
+  border-radius: 1px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 6px rgba(255, 215, 0, 0.5);
+}
+
+.loader-text {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--color-ui-silver);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}

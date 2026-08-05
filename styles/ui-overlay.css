@@ -1,0 +1,192 @@
+/* ── Hero Title ── */
+.hero-title {
+  position: fixed;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 8rem);
+  font-weight: 700;
+  color: var(--color-ui-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 20px rgba(255, 215, 0, 0.5),
+    0 0 60px rgba(255, 215, 0, 0.2),
+    0 0 100px rgba(255, 180, 0, 0.1);
+  opacity: 0;
+  user-select: none;
+  z-index: 20;
+}
+
+/* Entrance animation — text slides up with a golden glow sweep */
+.hero-title.entrance {
+  animation: titleEntrance 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.birthday-sub.entrance {
+  animation: subtitleEntrance 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+@keyframes titleEntrance {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+    text-shadow: 0 0 0px rgba(255,215,0,0), 0 0 0px rgba(255,215,0,0);
+  }
+  60% {
+    opacity: 1;
+    text-shadow: 0 0 40px rgba(255,215,0,0.8), 0 0 100px rgba(255,180,0,0.4), 0 0 160px rgba(255,150,0,0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    text-shadow: 0 0 20px rgba(255,215,0,0.5), 0 0 60px rgba(255,215,0,0.2), 0 0 100px rgba(255,180,0,0.1);
+  }
+}
+
+@keyframes subtitleEntrance {
+  0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  100% { opacity: 0.9; transform: translateX(-50%) translateY(0); }
+}
+
+/* ── Stage Subtitle ── */
+.stage-subtitle {
+  position: fixed;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 2vw, 1.4rem);
+  color: var(--color-ui-silver);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0;
+  user-select: none;
+  z-index: 20;
+  transition: opacity 0.6s ease;
+}
+
+/* ── CTA Button ── */
+.cta-button {
+  position: fixed;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2.5rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-ui-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: rgba(2, 2, 16, 0.7);
+  border: 1.5px solid var(--color-ui-gold);
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+  z-index: 20;
+}
+
+.cta-button:hover {
+  box-shadow:
+    0 0 20px rgba(255, 215, 0, 0.4),
+    inset 0 0 20px rgba(255, 215, 0, 0.1);
+  transform: translateX(-50%) scale(1.05);
+}
+
+/* ── Stage Dot Navigation ── */
+.stage-dots {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 20;
+}
+
+.stage-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-ui-silver);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.stage-dot.active {
+  background: var(--color-ui-gold);
+  border-color: var(--color-ui-gold);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* ── Scroll Indicator ── */
+.scroll-indicator {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 20;
+  opacity: 1;
+  transition: opacity var(--transition-medium);
+}
+
+.scroll-indicator.hidden {
+  opacity: 0;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--color-ui-gold), transparent);
+}
+
+.scroll-chevron {
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--color-ui-gold);
+  border-bottom: 2px solid var(--color-ui-gold);
+  transform: rotate(45deg);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: rotate(45deg) translateY(0); }
+  50% { opacity: 1; transform: rotate(45deg) translateY(4px); }
+}
+
+/* ── Toast ── */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-ui-gold);
+  background: rgba(2, 2, 16, 0.9);
+  border: 1px solid var(--color-ui-gold);
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  z-index: 30;
+  pointer-events: none;
+}
+
+.toast.visible {
+  opacity: 1;
+}
