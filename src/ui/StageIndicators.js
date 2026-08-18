@@ -75,7 +75,7 @@ export class StageIndicators {
     this.birthdaySub.className = 'stage-subtitle birthday-sub';
     this.birthdaySub.textContent = this.birthdayName
       ? `BATMAN WISHES YOU — FROM GOTHAM 🦇`
-      : 'FROM GOTHAM WITH LOVEE 🦇';
+      : 'FROM GOTHAM WITH LOVE 🦇';
     this.birthdaySub.style.cssText = 'bottom:20%;color:var(--color-ui-gold);font-size:clamp(0.7rem,1.5vw,1rem);opacity:0;transform:translateX(-50%) translateY(10px);';
     document.getElementById('ui-layer').appendChild(this.birthdaySub);
   }
